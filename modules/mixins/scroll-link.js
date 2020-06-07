@@ -168,11 +168,14 @@ export default (Component, customScroller) => {
     }
     render() {
       var className = "";
+      var style = {};
 
       if (this.state && this.state.active) {
         className = ((this.props.className || "") + " " + (this.props.activeClass || "active")).trim();
+        style = this.props.activeStyle || {}
       } else {
         className = this.props.className;
+        style = this.props.style
       }
 
       let props = Object.assign({}, this.props);
@@ -182,7 +185,7 @@ export default (Component, customScroller) => {
           delete props[prop];
         }
       }
-
+      props.style = style
       props.className = className;
       props.onClick = this.handleClick;
 
