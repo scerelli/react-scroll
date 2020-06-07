@@ -172,7 +172,7 @@ export default (Component, customScroller) => {
 
       if (this.state && this.state.active) {
         className = ((this.props.className || "") + " " + (this.props.activeClass || "active")).trim();
-        style = this.props.activeStyle || {}
+        style = Object.assign({}, this.props.style, this.props.activeStyle)
       } else {
         className = this.props.className;
         style = this.props.style
